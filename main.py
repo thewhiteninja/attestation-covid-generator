@@ -18,7 +18,7 @@ trip = Trip(datetime.now(), [TripReason.achats, TripReason.sante])
 
 def main():
     c = Certificate(prof, trip)
-    c.save()
+    c.save(directory=".")
 
 
 if __name__ == "__main__":

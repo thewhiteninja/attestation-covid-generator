@@ -68,7 +68,7 @@ class Certificate:
         self._profile = profile
         self._trip = trip
 
-    def save(self):
+    def save(self, directory="."):
         base = PdfFileReader(open(BASE_CERTIFICATE, "rb"), strict=False)
         base0 = base.getPage(0)
 
@@ -94,6 +94,7 @@ class Certificate:
             '/Keywords'    : 'covid19 covid-19 attestation déclaration déplacement officielle gouvernement'
         })
 
-        output_stream = open(self._trip.date.strftime("attestation-%Y-%m-%d_%H-%M.pdf"), "wb")
+        output_stream_filename = self._trip.date.strftime("attestation-%Y-%m-%d_%H-%M.pdf")
+        output_stream = open(os.path.join(directory, output_stream_filename), "wb")
         output.write(output_stream)
         output_stream.close()
