@@ -17,6 +17,8 @@
 
 Un portage Python du générateur de certificat de déplacement disponible sur le github de [LAB-MI](https://github.com/LAB-MI/attestation-deplacement-derogatoire-q4-2020)
 
+Un exemple de résultat : [generated-sample](data/generated-sample.pdf) 
+
 Rien de spécial à ajouter :)
 
 :snake: :heart: :mask:
