@@ -69,18 +69,24 @@ class Certificate:
         self._trip = trip
 
     def save(self, directory="."):
+        # Open certificate template and get the first page
         base = PdfFileReader(open(BASE_CERTIFICATE, "rb"), strict=False)
         base0 = base.getPage(0)
 
+        # Create a PDF data page with profile and trip data
         data = PdfFileReader(make_data_layer(self._profile, self._trip), strict=False)
         data0 = data.getPage(0)
         data1 = data.getPage(1)
+
+        # Merge data page with template page
         base0.mergePage(data0)
 
+        # Create output PDF and add created pages
         output = PdfFileWriter()
         output.addPage(base0)
         output.addPage(data1)
 
+        # Update PDF metadata
         utcdate = self._trip.date.astimezone(pytz.utc)
 
         output.addMetadata({
@@ -94,6 +100,7 @@ class Certificate:
             '/Keywords'    : 'covid19 covid-19 attestation déclaration déplacement officielle gouvernement'
         })
 
+        # Write PDF file
         output_stream_filename = self._trip.date.strftime("attestation-%Y-%m-%d_%H-%M.pdf")
         output_stream = open(os.path.join(directory, output_stream_filename), "wb")
         output.write(output_stream)
