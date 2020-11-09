@@ -8,7 +8,7 @@ from reportlab.pdfgen.canvas import Canvas
 
 import qr
 
-BASE_CERTIFICATE = os.path.join("data", "certificate.pdf")
+BASE_CERTIFICATE = os.path.join("data", "certificate.1e3570bc.pdf")
 
 
 def get_ideal_font_size(canvas: Canvas, text, font="Helvetica", max_width=83, min_size=7, default_size=11):

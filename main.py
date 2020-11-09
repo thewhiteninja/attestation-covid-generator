@@ -3,7 +3,7 @@ from datetime import datetime
 from certificate import Certificate
 from data import TripReason, Trip, Profile
 
-prof = Profile(
+profile = Profile(
     firstname="Jean",
     lastname="Bob",
     birthday="11/10/1974",
@@ -13,11 +13,12 @@ prof = Profile(
     city="Paris"
 )
 
-trip = Trip(datetime.now(), [TripReason.achats, TripReason.sante])
+trip = Trip(date=datetime.now(),
+            reasons=[TripReason.achats, TripReason.travail])
 
 
 def main():
-    c = Certificate(prof, trip)
+    c = Certificate(profile, trip)
     c.save(directory=".")
 
 
