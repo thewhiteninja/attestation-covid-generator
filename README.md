@@ -19,6 +19,8 @@ Un portage Python du générateur de certificat de déplacement disponible sur l
 
 Un exemple de résultat : [generated-sample](data/generated-sample.pdf) 
 
+Version du PDF: 28 Novembre 2020
+
 Rien de spécial à ajouter :)
 
 :snake: :heart: :mask:
