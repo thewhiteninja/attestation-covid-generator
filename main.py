@@ -19,7 +19,7 @@ trip = Trip(date=datetime.now(),
 
 def main():
     c = Certificate(profile, trip)
-    c.save(directory=".")
+    c.save(directory="tests")
 
 
 if __name__ == "__main__":

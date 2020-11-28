@@ -8,7 +8,7 @@ from reportlab.pdfgen.canvas import Canvas
 
 import qr
 
-BASE_CERTIFICATE = os.path.join("data", "certificate.d3f46166.pdf")
+BASE_CERTIFICATE = os.path.join("data", "certificate.0eed39bb.pdf")
 
 
 def get_ideal_font_size(canvas: Canvas, text, font="Helvetica", max_width=83, min_size=7, default_size=11):
@@ -26,13 +26,13 @@ def make_data_layer(profile, trip):
     canvas = Canvas(tempfile.TemporaryFile())
     canvas.setFont("Helvetica", 11)
 
-    canvas.drawString(107, 657, "%s %s" % (profile.firstname, profile.lastname))
-    canvas.drawString(107, 627, profile.birthday)
-    canvas.drawString(240, 627, profile.placeofbirth)
-    canvas.drawString(124, 596, "%s %s %s" % (profile.address, profile.zipcode, profile.city))
+    canvas.drawString(92, 702, "%s %s" % (profile.firstname, profile.lastname))
+    canvas.drawString(92, 684, profile.birthday)
+    canvas.drawString(214, 684, profile.placeofbirth)
+    canvas.drawString(104, 665, "%s %s %s" % (profile.address, profile.zipcode, profile.city))
 
-    canvas.drawString(76, 92, trip.date.strftime("%d/%m/%Y"))
-    canvas.drawString(246, 92, trip.date.strftime("%H:%M"))
+    canvas.drawString(63, 58, trip.date.strftime("%d/%m/%Y"))
+    canvas.drawString(227, 58, trip.date.strftime("%H:%M"))
 
     location_size = get_ideal_font_size(canvas, profile.city)
     if location_size == 0:
@@ -40,11 +40,11 @@ def make_data_layer(profile, trip):
         print('Essayez d\'utiliser des abréviations ("Saint" en "St." par exemple) quand cela est possible.')
         location_size = 7
     canvas.setFont("Helvetica", location_size)
-    canvas.drawString(93, 122, profile.city)
+    canvas.drawString(78, 76, profile.city)
 
     canvas.setFont("Helvetica", 12)
     for reason in trip.reasons:
-        canvas.drawString(59, reason.value, "x")
+        canvas.drawString(47, reason.value, "x")
 
     #canvas.setFont("Helvetica", 9)
     #canvas.setFillColorRGB(1,1,1)
