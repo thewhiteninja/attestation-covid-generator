@@ -109,6 +109,8 @@ class Certificate:
 
         # Write PDF file
         output_stream_filename = self._trip.date.strftime("attestation-%Y-%m-%d_%H-%M.pdf")
-        output_stream = open(os.path.join(directory, output_stream_filename), "wb")
+        filename = os.path.join(directory, output_stream_filename)
+        output_stream = open(filename, "wb")
         output.write(output_stream)
         output_stream.close()
+        return filename
